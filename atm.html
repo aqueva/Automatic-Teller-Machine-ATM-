@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: rgb(3, 3, 51);
+        color: aliceblue;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 20px;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    h1{
+        font-size: 50px;
+        color: orangered;
+        font-size: 50px;
+    }
+    h2{
+        color: orangered;
+        font-size: 35px;
+    }
+    .container{
+        border: 1px solid white;
+        border-radius: 16px;
+        align-items: center;
+        width: 90%;
+        display: flex;
+    }
+    .col1{
+        width: 30%;
+        padding: 40px;
+    }
+    .fluidcont{
+        border: 2px solid white;
+        border-radius: 16px;
+padding: 40px;
+    }
+    .inpt{
+        width: 300px;
+        height: 40px;
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 12px;
+        border: 2px solid orangered;
+    }
+    .btn1{
+        width: 300px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 12px;
+        background-color:orangered;
+    }.btn11{
+        width: 230px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 12px;
+        color:orangered;
+        background-color: white;
+    }
+
+</style>
+<body>
+    <h1><center><b>ATM</b></center></h1><br>
+   <div class="fluidcont">
+   <h2>Manage Your Funds</h2><br>
+    <h3>With ATM (Automatic Teller Machine) you are able to manage your funds by Deposit <br>Withdraw and Check balance.</h3><br>
+    
+    <div class="container">
+        <div class="col1" id="col1">
+            
+            <ul>
+                <li>
+                    <button class="btn11" onclick="depos()" id="btnn" style="display: block;">Deposit</button>
+                </li>
+                <li>
+                    <button class="btn11" onclick="withd()" id="btnnn" style="display: block;">Withdraw</button>
+                </li>
+                <li>
+                    <button class="btn11" onclick="chec()" id="btn" style="display: block;">Check balance</button>
+                </li>
+                <li>
+                    <button class="btn11" onclick="exist()" id="btnnnn" style="display: block;">Exit</button>
+                </li>
+            </ul>
+        </div>
+        <div class="col1">
+            <p id="order"><center></center></p>
+            <p id="text" style="display: block;">Please, ensure that you follow all instructions as there are.</p>
+            <input type="number" name="" id="inp" placeholder="Enter here" class="inpt" style="display: none;">
+            <input type="number" name="" id="inpp" placeholder="Enter here" class="inpt" style="display: none;">
+            <br>
+            <button class="btn1" onclick="deposs()" id="btns" style="display: none;">Deposit</button>
+            <button class="btn1" onclick="withdd()" id="btnss" style="display: none;">Withdraw</button>
+        </div>
+        <div class="col1" style="border: 1px solid orangered; border-radius: 12px; margin-left: 20px; display: block;" id="this"><p id="result"></p></div>
+    </div>
+</div>
+<script> 
+ function depos(){
+    document.getElementById("order").innerHTML="Enter amount you want to deposit.";
+    document.getElementById("text").style.display="none"; 
+    document.getElementById("btnss").style.display="none"; 
+    document.getElementById("btns").style.display="block"; 
+    document.getElementById("inp").style.display="block";
+    document.getElementById("inpp").style.display="none";
+    document.getElementById("result").innerHTML="";
+    document.getElementById("this").style.display="none"; 
+ }
+ function withd(){
+    document.getElementById("order").innerHTML="Enter amount you want to withdraw.";
+    document.getElementById("text").style.display="none"; 
+    document.getElementById("btns").style.display="none"; 
+    document.getElementById("btnss").style.display="block"; 
+    document.getElementById("inpp").style.display="block";
+    document.getElementById("inp").style.display="none";
+    document.getElementById("result").innerHTML="";
+    document.getElementById("this").style.display="none"; 
+ }
+ function chec(){
+    document.getElementById("text").innerHTML="Your balance is:";
+    document.getElementById("text").style.display="block"; 
+    document.getElementById("btns").style.display="none"; 
+    document.getElementById("inpp").style.display="none";
+    document.getElementById("order").style.display="none";
+    document.getElementById("btnss").style.display="none";
+    document.getElementById("result").innerHTML=balance;
+    document.getElementById("this").style.display="block"; 
+
+ }
+    function deposs(){
+        
+        let deposit=document.getElementById("inp").value;
+        balance=parseInt(deposit) + parseInt(balance);
+        document.getElementById("inp").style.display="none"; 
+        document.getElementById("order").style.display="none"; 
+        document.getElementById("btns").style.display="none"; 
+        document.getElementById("result").innerHTML="";
+        document.getElementById("result").innerHTML=deposit;
+        document.getElementById("text").style.display="block"; 
+        document.getElementById("text").innerHTML="You have deposited:"; 
+        document.getElementById("this").style.display="block"; 
+
+    }
+
+ let balance=0;
+    function withdd(){
+        let withdraw=document.getElementById("inpp").value;
+        balance=parseInt(balance) - parseInt(withdraw);
+        document.getElementById("result").innerHTML="";
+        document.getElementById("text").style.display="none"; 
+        document.getElementById("inpp").style.display="none"; 
+        document.getElementById("result").innerHTML=withdraw;
+        document.getElementById("text").style.display="block"; 
+        document.getElementById("text").innerHTML="You have withdraw:"; 
+        document.getElementById("btnss").style.display="none"; 
+        document.getElementById("this").style.display="block"; 
+    }
+    function exist(){
+        balance=0;
+        document.getElementById("text").style.display="block"; 
+        document.getElementById("inp").style.display="none"; 
+        document.getElementById("inpp").style.display="none"; 
+        document.getElementById("this").style.display="none"; 
+        document.getElementById("text").innerHTML="Thank you to choose us."; 
+    }
+</script>
+</body>
+</html>
